@@ -27,7 +27,6 @@ void bfs(int start) {
     printf("BFS traversal starting from vertex %d:\n", start + 1);
 
     visited[start] = 1;
-    printf("%d ", start + 1);
     queue[rear++] = start;
 
     while (front < rear) {
@@ -36,13 +35,11 @@ void bfs(int start) {
         for (int i = 0; i < n; i++) {
             if (graph[currentVertex][i] == 1 && !visited[i]) {
                 visited[i] = 1;
-                printf("%d ", i + 1);
+                printf("%d -> %d\n", currentVertex + 1, i + 1); // Modified line to print the edge
                 queue[rear++] = i;
             }
         }
     }
-
-    printf("\n");
 }
 
 int main() {
