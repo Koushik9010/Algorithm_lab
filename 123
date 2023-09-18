@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+void bubbleSort(int arr[], int n) {
+    int temp;
+    int sorted; // Flag to check if the array is sorted
+
+    for (int i = 0; i < n - 1; i++) {
+        sorted = 1; // Assume the array is sorted at the beginning of each pass
+
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // Swap arr[j] and arr[j + 1]
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                sorted = 0; // Set sorted to 0 (false) if a swap is performed
+            }
+        }
+
+        // If the array is sorted at this point, exit the loop early
+        if (sorted) {
+            break;
+        }
+    }
+}
+
+int main() {
+    int n;
+
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+
+    printf("Enter %d elements:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    bubbleSort(arr, n);
+
+    printf("Sorted array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
