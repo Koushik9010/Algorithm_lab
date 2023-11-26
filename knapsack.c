@@ -11,14 +11,18 @@ int knapSack(int W, int wt[], int val[], int n) {
   int K[n][W + 1];
 
   // Build the table K[][] in a bottom-up manner
-  for (i = 0; i < n; i++) {
-    for (w = 0; w <= W; w++) {
-      if (i == 0 || w == 0)
+  for (i = 0; i < n; i++) { //iterates over each item
+    for (w = 0; w <= W; w++) { //terates over each possible knapsack weight capacity
+      if (i == 0 || w == 0)//if it's the first item or the knapsack has zero capacity  
         K[i][w] = 0;
       else if (w >= wt[i - 1])
+        //weight of the current item is less than or equal to the current capacity
         K[i][w] = max(val[i - 1] + K[i - 1][w - wt[i - 1]], K[i - 1][w]);
+        //calculates the maximum value or by excluding the current item
       else
+        // /f the weight of the current item is greater than the current capacity
         K[i][w] = K[i - 1][w];
+      //simply takes the value from the cell
     }
   }
 
